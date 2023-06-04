@@ -1,7 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
 export default function Reset() {
     const [email, setEmail] = useState("");
+    useEffect(()=>{
+        let email = localStorage.getItem('email');
+        if(email){
+            setEmail(email);
+        }
+    },[]);
+    useEffect(()=>{
+        localStorage.setItem('email',email);
+    },[email]);
+
     return (
         <>
             <h3>Reset Password for</h3>
